@@ -1,0 +1,12 @@
+<h1>Lista de Medidas</h1>
+
+<div class="row">
+  <div class="col-md-11">
+  </div>
+  <div class="col">
+    <button type="button" class="btn btn-primary" (click)="onRegister()">Cadastrar</button>
+  </div>
+</div>
+
+<app-table [data]="dataModel()" [columns]="tableColumns" [actions]="tableActions"
+  (actionClick)="handleTableAction($event)"></app-table>

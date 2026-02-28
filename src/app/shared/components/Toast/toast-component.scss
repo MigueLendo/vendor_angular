@@ -1,0 +1,101 @@
+/* Container principal fixo no topo direito */
+.toast-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 10000;
+
+  display: flex;
+  flex-direction: column; /* Barra embaixo do conteúdo */
+  min-width: 320px;
+  border-radius: 8px;
+  overflow: hidden; 
+  background-color: #fff; /* Fundo base para garantir contraste */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  color: #000000; /* Texto sempre preto */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  animation: slideIn 0.3s ease-out;
+}
+
+/* Alinhamento Horizontal do Conteúdo (Ícone, Texto e X) */
+.toast-content {
+  display: flex;
+  align-items: center; /* Alinha todos na mesma linha horizontal */
+  gap: 12px;
+  padding: 16px;
+}
+
+/* --- CORES DE FUNDO --- */
+
+.toast-container.success {
+  background-color: #a5d6a7; /* Verde claro para ler texto preto */
+  border-left: 6px solid #2e7d32;
+}
+
+.toast-container.danger {
+  background-color: #ef9a9a; /* Vermelho claro para ler texto preto */
+  border-left: 6px solid #d32f2f;
+}
+
+.toast-container.info {
+  background-color: #fff59d; /* Amarelo/Info claro */
+  border-left: 6px solid #fbc02d;
+}
+
+/* Elementos Internos */
+.icon {
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.message {
+  flex-grow: 1;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.close-btn {
+  background: transparent;
+  border: none;
+  color: #000;
+  cursor: pointer;
+  font-size: 18px;
+  opacity: 0.5;
+  transition: 0.2s;
+  display: flex;
+  align-items: center;
+}
+
+.close-btn:hover { opacity: 1; }
+
+/* BARRA DE PROGRESSO SINCRONIZADA */
+.progress-bar {
+  height: 4px;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.05);
+  position: relative;
+}
+
+.progress-bar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+  
+  /* Usa a duração que vem do TypeScript através da variável --duration */
+  animation: shrink var(--duration, 3000ms) linear forwards;
+}
+
+@keyframes shrink {
+  from { width: 100%; }
+  to { width: 0%; }
+}
+
+@keyframes slideIn {
+  from { transform: translateX(100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
