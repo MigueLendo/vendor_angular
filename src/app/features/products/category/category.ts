@@ -1,11 +1,11 @@
 import { Component, inject } from '@angular/core';
 import { CategoryModel } from './interfaces/category-model';
-import { Field, required, minLength, submit, FieldTree } from '@angular/forms/signals';
+import { Field, required, minLength } from '@angular/forms/signals';
 import { BaseForm } from '../../../shared/class/base-form';
 import { CategoryService } from './service/category-service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { ToastService } from '../../../shared/components/Toast/interfaces/toast-config';
+import { ToastService } from '../../../shared/components/Toast/service/toast-service';
 
 @Component({
   selector: 'app-category',
@@ -19,6 +19,7 @@ export class Category extends BaseForm<CategoryModel> {
   categoryService = inject(CategoryService);
   route = inject(ActivatedRoute);
   router = inject(Router);
+  private toastService = inject(ToastService);
 
   routeData = toSignal(this.route.data);
   contactForm: any;
@@ -67,7 +68,7 @@ export class Category extends BaseForm<CategoryModel> {
       error: () => this.toastService.show('Erro ao salvar!', 'danger', 2000)
     });
   }
-  
+
 
   onBack(): any {
 
@@ -76,5 +77,5 @@ export class Category extends BaseForm<CategoryModel> {
   }
 
 
-  private toastService = inject(ToastService);
+
 }

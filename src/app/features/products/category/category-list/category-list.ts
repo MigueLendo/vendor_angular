@@ -4,7 +4,7 @@ import { CategoryService } from '../service/category-service';
 import { CategoryModel } from '../interfaces/category-model';
 import { Table } from '../../../../shared/components/table/table';
 import { TableAction, TableColumn } from '../../../../shared/components/table/table-interface';
-import { ToastService } from '../../../../shared/components/Toast/interfaces/toast-config';
+import { ToastService } from '../../../../shared/components/Toast/service/toast-service';
 
 @Component({
   selector: 'app-category-list',
@@ -18,6 +18,7 @@ export class CategoryList implements OnInit {
 
   private router = inject(Router);
   private categoryService = inject(CategoryService);
+  private toastService = inject(ToastService); 
 
   dataModel = signal<CategoryModel[]>([]);
 
@@ -71,8 +72,6 @@ export class CategoryList implements OnInit {
       });
     }
   }
-
-  private toastService = inject(ToastService);
 
   onRegister() {
 

@@ -1,0 +1,32 @@
+<div class="container">
+    <div class="row mb-3 mt-4">
+        <div class="col">
+            <h1>Medidas</h1>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col">
+            <label class="form-label">Nome</label>
+
+            <input type="text" class="form-control" [field]="formdata.name">
+
+            @if (formdata.name().invalid() && formdata.name().touched()) {
+            <div class="text-danger mt-1">
+                @for (error of formdata.name().errors(); track $index) {
+                <small class="d-block">{{ error.message }}</small>
+                }
+            </div>
+            }
+        </div>
+    </div>
+
+
+    <div class="row text-end">
+        <div class="col">
+            <button type="button" class="btn btn-danger me-2" (click)="onBack()">Voltar</button>
+
+            <button [disabled]="isDisabled" class="btn btn-primary" (click)="onSave()"> Salvar </button>
+
+        </div>
+    </div>

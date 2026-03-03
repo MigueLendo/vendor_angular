@@ -1,6 +1,6 @@
-export interface toastInterface {
+export interface IToastInterface {
 
-    id: string | number,
+    id: number,
     message: string,
     visible: boolean,
     type: 'danger' | 'success' | 'info',

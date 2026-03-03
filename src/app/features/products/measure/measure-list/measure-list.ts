@@ -1,10 +1,10 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, OnInit, signal } from '@angular/core';
 import { TableAction, TableColumn } from '../../../../shared/components/table/table-interface';
 import { measureModel } from '../interface/interface';
 import { measureService } from '../service/measure-service';
 import { Table } from "../../../../shared/components/table/table";
 import { Router } from '@angular/router';
-import { ToastService } from '../../../../shared/components/Toast/interfaces/toast-config';
+import { ToastService } from '../../../../shared/components/Toast/service/toast-service';
 
 @Component({
   selector: 'app-measure-list',
@@ -12,14 +12,17 @@ import { ToastService } from '../../../../shared/components/Toast/interfaces/toa
   templateUrl: './measure-list.html',
   styleUrl: './measure-list.scss',
 })
-export class MeasureList {
+export class MeasureList implements OnInit {
+
   private router = inject(Router);
   private measureService = inject(measureService);
+
+  private toastService = inject(ToastService);
 
   dataModel = signal<measureModel[]>([]);
 
   tableColumns: TableColumn<measureModel>[] = [
-    { label: 'Nome', key: 'nome' }
+    { label: 'Nome', key: 'name' }
   ];
 
   tableActions: TableAction<measureModel>[] = [
@@ -41,12 +44,11 @@ export class MeasureList {
     })
   }
 
-  private toastService = inject(ToastService)
 
   handleTableAction(event: { item: measureModel, action: string }) {
 
     if (event.action === 'edit') {
-      this.router.navigate(['/category/form', event.item.id]);
+      this.router.navigate(['/measure/form', + event.item.id]);
     }
 
     if (event.action === 'delete') {
@@ -55,6 +57,8 @@ export class MeasureList {
 
   }
 
+
+  //TODO: trocar o nome do remover para delete ( inglês)
   private removerItem(item: measureModel) {
 
     if (item.id) {
@@ -63,7 +67,7 @@ export class MeasureList {
         next: () => {
 
           this.dataModel.update(lista => lista.filter(x => x.id !== item.id));
-          this.toastService.show("removido com sucesso", 'danger', 250);
+          this.toastService.show("removido com sucesso", 'success', 250);
           setTimeout(() => this.router.navigate(['./measure/list']), 1500)
         },
 
@@ -74,8 +78,8 @@ export class MeasureList {
 
   onRegister() {
 
-    this.toastService.show("Voltando para o formulário", 'info', 2500);
-    setTimeout(() => this.router.navigate(['./measure/form']), 1000)
+    this.toastService.show("Voltando para o formulário", 'info', 2200);
+    setTimeout(() => this.router.navigate(['./measure/form']), 2000)
   }
 
 }

@@ -20,10 +20,23 @@ export class measureService extends BaseSave<measureModel> {
         return data.map((value: any) => {
           return {
             id: value.id,
-            nome: value.nome
+            name: value.nome
           }
         })
       })
     )
+  }
+
+
+  override searchId(id: number | string): Observable<measureModel> {
+    return super.searchId(id).pipe(
+      map((response: any) => {
+        const data = response.data[0];
+
+        return {
+          id: data.id,
+          name: data.nome
+        }
+      }))
   }
 }

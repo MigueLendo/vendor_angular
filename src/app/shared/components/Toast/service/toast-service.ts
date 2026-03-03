@@ -1,8 +1,5 @@
 import { Injectable, signal } from '@angular/core';
-import { toastInterface } from './toast-interface';
-import { timer } from 'rxjs';
-import { time } from 'console';
-
+import { IToastInterface } from '../interfaces/toast-interface';
 
 // declaro que posso usar em outros lugares do meu sistema - dia 24/02
 @Injectable({
@@ -11,7 +8,7 @@ import { time } from 'console';
 export class ToastService {
 
   // signal minha estrutura para gerencias minha tela avisando e mudando assim que for especificado na tela - dia 24/02
-  private toast = signal<toastInterface>({
+  private toast = signal<IToastInterface>({
     id: 0,
     message: '',
     visible: false,
@@ -20,6 +17,7 @@ export class ToastService {
   });
 
 
+  // TODO: isActive esta com um nome improprio, pois esta se referindo ao meu toast EX: ToastIsActive
   // deixando somente para leitura para que nenhum outro componente meixa nos toast - dia 24/02
   readonly isActive = this.toast.asReadonly()
 
