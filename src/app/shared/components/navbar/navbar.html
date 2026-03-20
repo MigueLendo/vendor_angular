@@ -1,25 +1,34 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Vendor</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
-      aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <a class="navbar-brand" routerLink="/">Vendor</a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown">
       <span class="navbar-toggler-icon"></span>
     </button>
+
     <div class="collapse navbar-collapse" id="navbarNavDropdown">
       <ul class="navbar-nav">
-        <li class="nav-item dropdown">
-          @for (itens of itens(); track $index) {
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            {{itens.name}}
-          </a>
+        @for (itemPai of itens(); track itemPai.name) {
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" 
+               data-bs-toggle="dropdown" aria-expanded="false"
+               (click)="$event.preventDefault()">
+              {{ itemPai.name }}
+            </a>
 
-          <ul class="dropdown-menu">
-            @for (item of itens.children; track $index) {
-            <li><a class="dropdown-item" href="{{item.routes}}">{{item.name}}</a></li>
-            }
-          </ul>
-          }
-        </li>
+            <ul class="dropdown-menu">
+              @for (filho of itemPai.children; track filho.name) {
+                <li>
+                  <a class="dropdown-item" 
+                     [routerLink]="filho.routes" 
+                     routerLinkActive="active">
+                    {{ filho.name }}
+                  </a>
+                </li>
+              }
+            </ul>
+          </li>
+        }
       </ul>
     </div>
   </div>

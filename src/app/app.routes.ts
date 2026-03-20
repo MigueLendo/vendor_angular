@@ -13,6 +13,10 @@ export const routes: Routes = [
     {
         path: "measure",
         loadChildren: () => import('./features/products/measure/routes/measure.routes').then(m => m.measureRoutes)
+    },
+    {
+        path: "group",
+        loadChildren: () => import('./features/products/measure/routes/measure.routes').then(m => m.measureRoutes)
     }
 ];
 

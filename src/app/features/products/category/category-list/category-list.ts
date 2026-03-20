@@ -27,8 +27,8 @@ export class CategoryList implements OnInit {
   ];
 
   tableActions: TableAction<CategoryModel>[] = [
-    { label: 'Editar', action: 'edit', class: 'btn-primary', icon: 'bi bi-pencil' },
-    { label: 'Excluir', action: 'delete', class: 'btn-danger', icon: 'bi bi-trash' }
+    { label: 'Excluir', action: 'edit', class: 'btn-danger', icon: 'bi bi-pencil' },
+    { label: 'Editar', action: 'delete', class: 'btn-primary', icon: 'bi bi-trash' }
   ];
 
 
@@ -47,11 +47,11 @@ export class CategoryList implements OnInit {
 
   handleTableAction(event: { item: CategoryModel, action: string }) {
 
-    if (event.action === 'edit') {
+    if (event.action === 'delete') {
       this.router.navigate(['/category/form', event.item.id]);
     }
 
-    if (event.action === 'delete') {
+    if (event.action === 'edit') {
       this.removerItem(event.item);
     }
 

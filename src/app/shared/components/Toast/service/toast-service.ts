@@ -8,34 +8,36 @@ import { IToastInterface } from '../interfaces/toast-interface';
 export class ToastService {
 
   // signal minha estrutura para gerencias minha tela avisando e mudando assim que for especificado na tela - dia 24/02
-  private toast = signal<IToastInterface>({
-    id: 0,
-    message: '',
-    visible: false,
-    type: 'info',
-    timer: 0
-  });
+  public toasts = signal<IToastInterface[]>(
+    [
 
+    ]
+  );
 
-  // TODO: isActive esta com um nome improprio, pois esta se referindo ao meu toast EX: ToastIsActive
-  // deixando somente para leitura para que nenhum outro componente meixa nos toast - dia 24/02
-  readonly isActive = this.toast.asReadonly()
-
+  counter = 0
 
   // então ao mostrar eu terei que especificar a mensagem e o type e o time
-  show(msg: string, type: 'danger' | 'success' | 'info', time: number) {
-    this.toast.set({ id: Math.random(), message: msg, visible: true, type: type, timer: time })
+  show(msg: string, type: 'danger' | 'success' | 'info', time: number = 3000) {
+
+    let id = this.counter++;
+
+    let toast = { id: id, message: msg, visible: true, type: type, timer: time };
+
+
+    this.toasts.update((list) => [...list, toast]);
+
 
     setTimeout(() => {
-
-      this.hide();
-    }, 3000)
+      this.hide(id);
+    }, time)
 
   }
 
   // para fechar meus toast nas telas - dia 24/02
-  hide() {
-    this.toast.set({ id: 0, message: "", visible: false, type: "danger", timer: 0 })
+  hide(id: number) {
+
+    this.toasts.update((list) => list.filter((toast) => toast.id != id))
+
   }
 
 }
