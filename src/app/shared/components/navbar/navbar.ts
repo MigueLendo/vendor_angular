@@ -19,7 +19,7 @@ export class NavbarComponent {
       children: [
         { name: 'Categorias', routes: '/category/form', children: [] },
         { name: 'Medidas', routes: '/measure/form', children: [] },
-        { name: 'grupo', routes: '/group/form', children: [] },
+        { name: 'login', routes: '/group/form', children: [] },
       ]
     }
   ]);

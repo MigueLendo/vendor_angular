@@ -2,7 +2,7 @@ import { Routes } from '@angular/router';
 import { categoryResolver } from './category-data-resolver';
 import { categoryDataResolverList } from './category-data-resolver-list';
 
- 
+
 export const categoryRoutes: Routes = [
     {
         path: "form",

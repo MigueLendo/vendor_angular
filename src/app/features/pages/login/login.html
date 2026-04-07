@@ -1,0 +1,79 @@
+<div class="d-flex align-items-center justify-content-center vh-100 bg-light">
+    <div class="card shadow-lg border-0 p-4" style="width: 100%; max-width: 400px; border-radius: 15px;">
+        <div class="card-body text-center">
+
+            <h3 class="fw-bold text-primary mb-1">Vendor</h3>
+            <p class="text-muted small mb-4">Insira seus dados para entrar</p>
+
+            <form class="text-start">
+
+                <!-- EMAIL -->
+                <div class="mb-3">
+                    <label class="form-label small fw-bold text-secondary">E-mail</label>
+
+                    <div class="input-group">
+                        <span class="input-group-text bg-white border-end-0"
+                            [class.border-danger]="formdata.email().errors().length > 0 && formdata.email().touched()">
+                            <i class="bi bi-envelope text-primary"></i>
+                        </span>
+
+                        <input type="email" class="form-control border-start-0 ps-0"
+                            [class.is-invalid]="formdata.email().errors().length > 0 && formdata.email().touched()"
+                            [field]="formdata.email" placeholder="email@exemplo.com">
+                    </div>
+
+                    @if (formdata.email().errors().length > 0 && formdata.email().touched()) {
+                    <div class="text-danger small fw-bold mt-1">
+                        @for (error of formdata.email().errors(); track $index) {
+                        <div>{{ error.message }}</div>
+                        }
+                    </div>
+                    }
+                </div>
+
+
+                <!-- PASSWORD -->
+                <div class="mb-4">
+                    <label class="form-label small fw-bold text-secondary">Senha</label>
+
+                    <div class="input-group">
+                        <span class="input-group-text bg-white border-end-0"
+                            [class.border-danger]="formdata.password().errors().length > 0 && formdata.password().touched()">
+                            <i class="bi bi-lock text-primary"></i>
+                        </span>
+
+                        <input [type]="showPassword() ? 'text' : 'password'"
+                            class="form-control border-start-0 border-end-0 ps-0"
+                            [class.is-invalid]="formdata.password().errors().length > 0 && formdata.password().touched()"
+                            [field]="formdata.password" placeholder="••••••••">
+
+                        <button class="input-group-text bg-white border-start-0" type="button"
+                            (click)="showPassword.set(!showPassword())">
+
+                            <i class="bi" [class]="showPassword() ? 'bi-eye-slash' : 'bi-eye'"></i>
+
+                        </button>
+                    </div>
+
+                    @if (formdata.password().errors().length > 0 && formdata.password().touched()) {
+                    <div class="text-danger small fw-bold mt-1">
+                        @for (error of formdata.password().errors(); track $index) {
+                        <div>{{ error.message }}</div>
+                        }
+                    </div>
+                    }
+                </div>
+
+
+                <!-- BUTTON -->
+                <button type="button" (click)="onSave()" class="btn btn-primary w-100 py-2 fw-bold shadow-sm">
+
+                    ENTRAR
+
+                </button>
+
+            </form>
+
+        </div>
+    </div>
+</div>
