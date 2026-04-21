@@ -1,29 +1,43 @@
 import { Routes } from '@angular/router';
-import { Login } from './features/pages/login/login';
 import { authGuard } from './shared/components/guard/guard';
+import { Login } from './login/login';
+import { Unauthorized } from './unauthorized/unauthorized';
+import { Main } from './main/main';
+import { Home } from './main/home/home';
 
 export const routes: Routes = [
+
     { path: "login", component: Login },
+
+    { path: "unauthorized", component: Unauthorized },
+
     {
         path: "",
-        canActivate: [authGuard],
+        component: Main,
+        // canActivate: [authGuard],
 
-        loadComponent: () => import('./features/pages/main/main').then(m => m.Main),
         children: [
             {
+                path: "home",
+                component: Home
+            },
+            {
                 path: "category",
-                loadChildren: () => import('./features/products/category/routes/category.routes').then(m => m.categoryRoutes)
+                loadChildren: () => import('./main/products/category/routes/category.routes').then(m => m.categoryRoutes)
             },
             {
                 path: "measure",
-                loadChildren: () => import('./features/products/measure/routes/measure.routes').then(m => m.measureRoutes)
+                loadChildren: () => import('./main/products/measure/routes/measure.routes').then(m => m.measureRoutes)
             },
             {
-                path: "home",
-                redirectTo: "category/form",
+                path: "",
+                redirectTo: "home",
                 pathMatch: 'full'
             }
         ]
     },
-    { path: "**", redirectTo: "login" }
+    {
+        path: "**",
+        redirectTo: "login"
+    }
 ];

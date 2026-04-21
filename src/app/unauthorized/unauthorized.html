@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acesso Não Autorizado - 401</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+    
+</head>
+<body>
+
+    <div class="container text-center">
+        <div class="card error-card p-5 mx-auto">
+            <div class="icon-box mb-3">
+                <i class="bi bi-shield-lock-fill"></i>
+            </div>
+            <h1 class="display-5 fw-bold text-dark">Ops!</h1>
+            <h2 class="h4 text-secondary mb-4">Sessão Expirada ou Acesso Negado</h2>
+            
+            <p class="text-muted mb-5">
+                Parece que o seu tempo de conexão acabou ou você tentou acessar uma área restrita. 
+                Por motivos de segurança, você precisa realizar o login novamente.
+            </p>
+
+            <div class="d-grid gap-2">
+                <a href="/login" class="btn btn-primary btn-lg shadow-sm">
+                    <i class="bi bi-box-arrow-in-right me-2"></i>Ir para o Login
+                </a>
+            </div>
+            
+            <div class="mt-4">
+                <span class="badge rounded-pill bg-light text-dark border">Erro 401 - Unauthorized</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

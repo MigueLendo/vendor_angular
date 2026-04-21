@@ -22,7 +22,7 @@
                             [field]="formdata.email" placeholder="email@exemplo.com">
                     </div>
 
-                    @if (formdata.email().errors().length > 0 && formdata.email().touched()) {
+                    @if (formdata.email().touched()) {
                     <div class="text-danger small fw-bold mt-1">
                         @for (error of formdata.email().errors(); track $index) {
                         <div>{{ error.message }}</div>
@@ -32,7 +32,7 @@
                 </div>
 
 
-                <!-- PASSWORD -->
+                <!-- Senha -->
                 <div class="mb-4">
                     <label class="form-label small fw-bold text-secondary">Senha</label>
 

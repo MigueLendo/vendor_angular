@@ -1,0 +1,19 @@
+body {
+    background-color: #f8f9fa;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.error-card {
+    max-width: 500px;
+    border: none;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+}
+
+.icon-box {
+    font-size: 4rem;
+    color: #dc3545;
+}

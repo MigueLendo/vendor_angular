@@ -17,8 +17,8 @@ export class NavbarComponent {
       name: 'Cadastros',
       routes: '',
       children: [
-        { name: 'Categorias', routes: '/category/form', children: [] },
-        { name: 'Medidas', routes: '/measure/form', children: [] },
+        { name: 'Categorias', routes: '/category/list', children: [] },
+        { name: 'Medidas', routes: '/measure/list', children: [] },
         { name: 'login', routes: '/group/form', children: [] },
       ]
     }

@@ -5,10 +5,12 @@ import { measureService } from '../service/measure-service';
 import { Table } from "../../../../shared/components/table/table";
 import { Router } from '@angular/router';
 import { ToastService } from '../../../../shared/components/Toast/service/toast-service';
+import { AuthStoreService } from '../../../../shared/components/service/auth-store-service';
 
 @Component({
   selector: 'app-measure-list',
   imports: [Table],
+  standalone: true,
   templateUrl: './measure-list.html',
   styleUrl: './measure-list.scss',
 })
@@ -16,6 +18,7 @@ export class MeasureList implements OnInit {
 
   private router = inject(Router);
   private measureService = inject(measureService);
+  private authStore = inject(AuthStoreService)
 
   private toastService = inject(ToastService);
 
@@ -32,7 +35,11 @@ export class MeasureList implements OnInit {
 
 
   ngOnInit() {
-    this.loadData();
+    if (this.authStore.token()) {
+      this.loadData();
+    } else {
+      this.router.navigate(['/unauthorized']);
+    }
   }
 
   private loadData() {
