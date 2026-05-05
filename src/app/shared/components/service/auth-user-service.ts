@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { AuthStoreService } from './auth-store-service';
 import { tap } from 'rxjs';
-import { environment } from '../../../../environments/environment.prod';
+import { environment } from '../../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -30,12 +30,6 @@ export class AuthUserService {
       })
     )
 
-    // return this.http.get(this.path).pipe(
-    //   tap((data: any) => {
 
-    //     const userinfo = data.data
-    //     this.authStoreService.setAuthUser(userinfo)
-    //   })
-    // )
   }
 }

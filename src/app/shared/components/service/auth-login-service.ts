@@ -3,7 +3,8 @@ import { Injectable, inject } from '@angular/core';
 import { Observable, tap } from 'rxjs';
 import { ILoginModel } from '../../../login/interface/login-model';
 import { AuthStoreService } from './auth-store-service';
-import { environment } from '../../../../environments/environment.prod';
+import { environment } from '../../../../environments/environment';
+
 
 
 @Injectable({
