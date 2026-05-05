@@ -2,15 +2,13 @@ import { inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { Observable } from 'rxjs';
+import { environment } from '../../../../environments/environment.prod';
 
-
-
-//TODO: tirar de dentro de pasta components e apagar o service.ts
 
 export class BaseSave<MODEL> {
 
     http = inject(HttpClient);
-    host: string = "http://localhost:3000";
+    host = environment.apiUrl;;
     endpoint: string = "";
 
     save(model: MODEL, id: string | number | null) {

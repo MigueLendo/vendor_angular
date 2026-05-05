@@ -3,6 +3,7 @@ import { Injectable, inject } from '@angular/core';
 import { Observable, tap } from 'rxjs';
 import { ILoginModel } from '../../../login/interface/login-model';
 import { AuthStoreService } from './auth-store-service';
+import { environment } from '../../../../environments/environment.prod';
 
 
 @Injectable({
@@ -13,7 +14,7 @@ export class AuthLoginService {
   authStoreService = inject(AuthStoreService);
 
   private http = inject(HttpClient);
-  private path = "http://localhost:3000/miguel/login";
+  private path = `${environment.apiUrl}/login/miguel`;
 
   tokenCreate(model: ILoginModel): Observable<any> {
 
