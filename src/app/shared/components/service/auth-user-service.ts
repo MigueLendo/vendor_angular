@@ -13,7 +13,7 @@ export class AuthUserService {
 
   private http = inject(HttpClient);
 
-  private path = `${environment.apiUrl}/login/miguel`;
+  private path = `${environment.apiUrl}/miguel/login`;
 
   getUser() {
 

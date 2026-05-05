@@ -15,7 +15,7 @@ export class AuthLoginService {
   authStoreService = inject(AuthStoreService);
 
   private http = inject(HttpClient);
-  private path = `${environment.apiUrl}/login/miguel`;
+  private path = `${environment.apiUrl}/miguel/login`;
 
   tokenCreate(model: ILoginModel): Observable<any> {
 
