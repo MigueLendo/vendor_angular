@@ -65,7 +65,6 @@ export class MeasureList implements OnInit {
   }
 
 
-  //TODO: trocar o nome do remover para delete ( inglês)
   private removerItem(item: measureModel) {
 
     if (item.id) {

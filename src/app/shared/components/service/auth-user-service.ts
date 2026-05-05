@@ -12,7 +12,7 @@ export class AuthUserService {
 
   private http = inject(HttpClient);
 
-  private path = "http://localhost:3000/login/miguel";
+  private path = "http://localhost:3000/miguel/login";
 
   getUser() {
 

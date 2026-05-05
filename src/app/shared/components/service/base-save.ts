@@ -13,8 +13,6 @@ export class BaseSave<MODEL> {
     host: string = "http://localhost:3000";
     endpoint: string = "";
 
-    // TODO: ver depois se esta merda funciona
-
     save(model: MODEL, id: string | number | null) {
 
         const endpoint = `${this.host}/${this.endpoint}`;
