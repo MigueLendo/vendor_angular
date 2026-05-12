@@ -1,0 +1,6 @@
+{
+  "root": "dist/vendor_angular/browser",
+  "routes": {
+    "/**": "index.html"
+  }
+}

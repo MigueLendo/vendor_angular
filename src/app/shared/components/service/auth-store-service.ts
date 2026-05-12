@@ -17,7 +17,7 @@ export class AuthStoreService {
 
         return exp ? Date.now() > exp : true;
     });
-
+    
     loadFromStorage() {
         const token = localStorage.getItem('token');
         const expireAt = localStorage.getItem('expireAt');
